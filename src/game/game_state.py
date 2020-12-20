@@ -17,6 +17,15 @@ class GameState:
         self.first_player = 0
         self.players = [Player() for _ in range(num_player)]
         self.deck = Deck()
-        self.dice = SeasonDiceSet(num_dice=num_player - 1)
+        self.dice = SeasonDiceSet(num_dice=num_player + 1)
         self.year = 1
         self.month = 1
+
+        self._simulate_prelude()
+
+    def _simulate_prelude(self) -> None:
+        for player in self.players:
+            drawn = self.deck.draw_cards(9)
+            player.hand.add_multiple(drawn[:3])
+            player.library_2 = drawn[3:6]
+            player.library_3 = drawn[6:9]

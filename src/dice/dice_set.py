@@ -15,7 +15,7 @@ class DiceSet:
         primary, secondary, uncommon = self._get_tokens_for_seasons(season)
         dices = self._create_dice_set(primary, secondary, uncommon)
 
-        self.dices = random.choices(dices, k=num_dice)
+        self.dices = random.sample(dices, k=num_dice)
 
     # TODO: Figure out if this is correct
     def _get_tokens_for_seasons(self, season: Season) -> List[EnergyToken]:
