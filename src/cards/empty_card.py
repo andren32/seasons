@@ -7,6 +7,9 @@ class EmptyCard(Card):
 
     def __init__(self) -> None:
         self.name = f"Random Empty card of Doom {EmptyCard.i}"
+        self.card_description = (
+            "Empty placeholder card that just gives some random amount of points"
+        )
         EmptyCard.i += 1
         self.points = random.randint(0, 5)
         self.can_activate = False
